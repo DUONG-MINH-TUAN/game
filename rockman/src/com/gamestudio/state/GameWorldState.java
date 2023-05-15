@@ -16,13 +16,7 @@ import com.gamestudio.gameobject.RobotR;
 import com.gamestudio.gameobject.SmallRedGun;
 import com.gamestudio.userinterface.GameFrame;
 import com.gamestudio.userinterface.GamePanel;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.Color;
-import java.applet.AudioClip;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -73,7 +67,7 @@ public class GameWorldState extends State {
     
     private int numberOfLife = 3;
     
-    public AudioClip bgMusic;
+    // public AudioClip bgMusic;
     
     public GameWorldState(GamePanel gamePanel){
             super(gamePanel);
@@ -98,7 +92,7 @@ public class GameWorldState extends State {
         
         initEnemies();
 
-        bgMusic = CacheDataLoader.getInstance().getSound("bgmusic");
+     
         
     }
     
@@ -300,7 +294,7 @@ public class GameWorldState extends State {
                         particularObjectManager.addObject(megaMan);
                     }else{
                         switchState(GAMEOVER);
-                        bgMusic.stop();
+                    
                     }
                 }
                 if(!finalbossTrigger && boss.getState() == ParticularObject.DEATH)
@@ -324,13 +318,7 @@ public class GameWorldState extends State {
 
         if(g2!=null){
 
-            // NOTE: two lines below make the error splash white screen....
-            // need to remove this line
-            //g2.setColor(Color.WHITE);
-            //g2.fillRect(0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT);
-            
-            
-            //physicalMap.draw(g2);
+           
             
             switch(state){
                 case INIT_GAME:
@@ -413,7 +401,6 @@ public class GameWorldState extends State {
                         switchState(GameWorldState.GAMEPLAY);
                     else switchState(GameWorldState.TUTORIAL);
                     
-                    bgMusic.loop();
                 }
                 if(state == GameWorldState.TUTORIAL && storyTutorial >= 1){
                     if(storyTutorial<=3){

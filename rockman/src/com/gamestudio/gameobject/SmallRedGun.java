@@ -8,15 +8,10 @@ package com.gamestudio.gameobject;
 import com.gamestudio.state.GameWorldState;
 import com.gamestudio.effect.Animation;
 import com.gamestudio.effect.CacheDataLoader;
-import static com.gamestudio.gameobject.ParticularObject.LEFT_DIR;
-import static com.gamestudio.gameobject.ParticularObject.NOBEHURT;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-/**
- *
- * @author phamn
- */
+
 public class SmallRedGun extends ParticularObject{
 
     private Animation forwardAnim, backAnim;

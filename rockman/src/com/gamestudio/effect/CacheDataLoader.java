@@ -1,27 +1,15 @@
 package com.gamestudio.effect;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
+
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Hashtable;
 import javax.imageio.ImageIO;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author phamn
- */
 public class CacheDataLoader {
     
     private static CacheDataLoader instance = null;
@@ -30,11 +18,10 @@ public class CacheDataLoader {
     private String animationfile = "data/animation.txt";
     private String physmapfile = "data/phys_map.txt";
     private String backgroundmapfile = "data/background_map.txt";
-    private String soundfile = "data/sounds.txt";
     
     private Hashtable<String, FrameImage> frameImages; 
     private Hashtable<String, Animation> animations;
-    private Hashtable<String, AudioClip> sounds;
+   
     
     private int[][] phys_map;
     private int[][] background_map;
@@ -47,9 +34,7 @@ public class CacheDataLoader {
         return instance;
     }
     
-    public AudioClip getSound(String name){
-        return instance.sounds.get(name);
-    }
+    
     
     public Animation getAnimation(String name){
         
@@ -79,55 +64,10 @@ public class CacheDataLoader {
         LoadAnimation();
         LoadPhysMap();
         LoadBackgroundMap();
-        LoadSounds();
         
     }
     
-    public void LoadSounds() throws IOException{
-        sounds = new Hashtable<String, AudioClip>();
         
-        FileReader fr = new FileReader(soundfile);
-        BufferedReader br = new BufferedReader(fr);
-        
-        String line = null;
-        
-        if(br.readLine()==null) { // no line = "" or something like that
-            System.out.println("No data");
-            throw new IOException();
-        }
-        else {
-            
-            fr = new FileReader(soundfile);
-            br = new BufferedReader(fr);
-            
-            while((line = br.readLine()).equals(""));
-            
-            int n = Integer.parseInt(line);
-            
-            for(int i = 0;i < n; i ++){
-                
-                AudioClip audioClip = null;
-                while((line = br.readLine()).equals(""));
-
-                String[] str = line.split(" ");
-                String name = str[0];
-                
-                String path = str[1];
-
-                try {
-                   audioClip =  Applet.newAudioClip(new URL("file","",str[1]));
-
-                } catch (MalformedURLException ex) {}
-                
-                instance.sounds.put(name, audioClip);
-            }
-            
-        }
-        
-        br.close();
-        
-    }
-    
     public void LoadBackgroundMap() throws IOException{
         
         FileReader fr = new FileReader(backgroundmapfile);
@@ -229,12 +169,9 @@ public class CacheDataLoader {
                 for(int j = 0;j<str.length;j+=2)
                     animation.add(getFrameImage(str[j]), Double.parseDouble(str[j+1]));
                 
-                instance.animations.put(animation.getName(), animation);
-                
+                instance.animations.put(animation.getName(), animation);       
             }
-            
         }
-        
         br.close();
     }
     
@@ -276,20 +213,44 @@ public class CacheDataLoader {
                 
                 while((line = br.readLine()).equals(""));
                 str = line.split(" ");
-                int x = Integer.parseInt(str[1]);
-                
+                int x;
+                if (!str[1].isEmpty()){
+                    x = Integer.parseInt(str[1]);
+
+                }else {
+                    x=0;
+                }
+                //
                 while((line = br.readLine()).equals(""));
                 str = line.split(" ");
-                int y = Integer.parseInt(str[1]);
-                
+                int y;
+                if (!str[1].isEmpty()){
+                    y = Integer.parseInt(str[1]);
+
+                }else {
+                    y=0;
+                }
+                // 
                 while((line = br.readLine()).equals(""));
                 str = line.split(" ");
-                int w = Integer.parseInt(str[1]);
-                
+                int w;
+                if (!str[1].isEmpty()){
+                    w = Integer.parseInt(str[1]);
+
+                }else {
+                    w=0;
+                }  
+                //
                 while((line = br.readLine()).equals(""));
                 str = line.split(" ");
-                int h = Integer.parseInt(str[1]);
-                
+                int h;
+                if (!str[1].isEmpty()){
+                    h = Integer.parseInt(str[1]);
+
+                }else {
+                    h=0;
+                } 
+                //
                 if(refreshImage) {
                     refreshImage = false;
                     imageData = ImageIO.read(new File(path));

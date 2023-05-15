@@ -7,16 +7,7 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author phamn
- */
 public class Animation {
     
     private String name;
@@ -117,7 +108,7 @@ public class Animation {
 
         ignoreFrames.add(false);
         frameImages.add(frameImage);
-        delayFrames.add(new Double(timeToNextFrame));
+        delayFrames.add(Double.valueOf(timeToNextFrame));
         
     }
     

@@ -17,6 +17,7 @@ public class GameFrame extends JFrame{
         super("Mega Man java game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Toolkit toolkit = this.getToolkit();
+        
         Dimension solution = toolkit.getScreenSize();
         try {
             CacheDataLoader.getInstance().LoadData();

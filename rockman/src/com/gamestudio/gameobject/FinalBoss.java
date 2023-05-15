@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.gamestudio.gameobject;
 
 import com.gamestudio.state.GameWorldState;
@@ -12,10 +8,6 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.Hashtable;
 
-/**
- *
- * @author phamn
- */
 public class FinalBoss extends Human {
 
     private Animation idleforward, idleback;
@@ -192,7 +184,7 @@ public class FinalBoss extends Human {
                 }
             }
         }
-       // drawBoundForCollisionWithEnemy(g2);
+       
     }
     
 }

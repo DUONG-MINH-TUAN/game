@@ -1,11 +1,6 @@
 package com.gamestudio.userinterface;
-
 import com.gamestudio.state.GameWorldState;
-import com.gamestudio.state.MenuState;
 import com.gamestudio.state.State;
-
-
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -23,12 +18,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
     public boolean isRunning = true;
 
     public GamePanel(){
-
-        //gameState = new MenuState(this);
         gameState = new GameWorldState(this);
-        
         inputManager = new InputManager(gameState);
-
     }
 
     public void startGame(){

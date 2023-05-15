@@ -1,23 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.gamestudio.gameobject;
 
 import com.gamestudio.state.GameWorldState;
 import com.gamestudio.effect.Animation;
 import com.gamestudio.effect.CacheDataLoader;
-import static com.gamestudio.gameobject.ParticularObject.LEFT_DIR;
-import static com.gamestudio.gameobject.ParticularObject.NOBEHURT;
-import java.applet.AudioClip;
+
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-/**
- *
- * @author phamn
- */
+
 public class RobotR extends ParticularObject {
 
     private Animation forwardAnim, backAnim;
@@ -25,7 +16,6 @@ public class RobotR extends ParticularObject {
     private long startTimeToShoot;
     private float x1, x2, y1, y2;
     
-    private AudioClip shooting;
     
     public RobotR(float x, float y, GameWorldState gameWorld) {
         super(x, y, 127, 89, 0, 100, gameWorld);
@@ -44,13 +34,11 @@ public class RobotR extends ParticularObject {
         setSpeedX(1);
         setSpeedY(1);
         
-        shooting = CacheDataLoader.getInstance().getSound("robotRshooting");
     }
 
     @Override
     public void attack() {  
         
-        shooting.play();
         Bullet bullet = new RobotRBullet(getPosX(), getPosY(), getGameWorld());
         
         if(getDirection()==LEFT_DIR)
@@ -112,7 +100,6 @@ public class RobotR extends ParticularObject {
                 }
             }
         }
-        //drawBoundForCollisionWithEnemy(g2);
     }
     
 }
